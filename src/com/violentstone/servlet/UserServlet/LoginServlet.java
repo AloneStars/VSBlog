@@ -1,4 +1,4 @@
-package com.violentstone.servlet;
+package com.violentstone.servlet.UserServlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;

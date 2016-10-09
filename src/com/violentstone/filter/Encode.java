@@ -15,7 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet Filter implementation class Encode
  */
-@WebFilter("/Encode")
+@WebFilter("/*")
 public class Encode implements Filter {
 
     /**
@@ -41,6 +41,9 @@ public class Encode implements Filter {
 		Request.setCharacterEncoding("utf-8");
 		Response.setCharacterEncoding("utf-8");
 		response.setContentType("text/html;charset=utf-8");
+		
+		//System.out.println("改编码");
+		
 		chain.doFilter(request, response);
 	}
 
