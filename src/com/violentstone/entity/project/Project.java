@@ -11,7 +11,7 @@ public class Project {
 	//项目图片
 	private String proImage;
 	
-	//项目类型
+	//项目类型(0~3)
 	private int proType;
 	
 	//项目描述

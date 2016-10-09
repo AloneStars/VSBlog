@@ -137,4 +137,19 @@ public class format {
 		public static boolean checkNull(String value){ 
 		return value == null || "".equals(value.trim()); 
 		} 
+		
+		
+		/**
+		 * 检查所有的字符串是否都不为空, 都不为空:true,有任意一个为空:false.
+		 * @param 可变参数arg0
+		 * @return
+		 */
+		public static boolean checkAllString(String ...arg0){
+			
+			for (String string : arg0) {
+				if(checkNull(string))
+					return false;
+			}
+			return true;			
+		}
 }
