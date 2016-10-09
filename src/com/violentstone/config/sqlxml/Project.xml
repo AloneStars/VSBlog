@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+       Copyright 2009-2012 the original author or authors.
+
+       Licensed under the Apache License, Version 2.0 (the "License");
+       you may not use this file except in compliance with the License.
+       You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+       Unless required by applicable law or agreed to in writing, software
+       distributed under the License is distributed on an "AS IS" BASIS,
+       WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+       See the License for the specific language governing permissions and
+       limitations under the License.
+
+-->
+
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="Project">
+
+  <resultMap type="com.violentstone.entity.project.Project" id="Project">
+    <id column="pro_id" jdbcType="INTEGER" property="proId"/>
+    <result column="pro_name" jdbcType="VARCHAR" property="proName"/>
+    <result column="pro_image" jdbcType="VARCHAR" property="proImage"/>
+    <result column="pro_type" jdbcType="INTEGER" property="proType"/>
+    <result column="pro_dec" jdbcType="VARCHAR" property="proDec"/>
+    <result column="pro_src" jdbcType="VARCHAR" property="proSrc"/>
+  </resultMap>
+  
+  <insert id="AddProject" parameterType="com.violentstone.entity.project.Project">
+      INSERT INTO project(pro_name,pro_image,pro_type,pro_dec,pro_src) VALUES(#{proName},#{proImage},#{proType},#{proDec},#{proSrc})
+  </insert>
+  
+  <delete id="DelProject" parameterType="INTEGER">
+      DELETE FROM project WHERE pro_id = #{_parameter}
+  </delete>
+  
+  <update id="UpdateProject" parameterType="com.violentstone.entity.project.Project">
+      UPDATE project set pro_name = #{proName} , pro_image = #{proImage} , pro_type = #{proType} , pro_dec = #{proDec} , pro_src = #{proSrc} where pro_id = #{proId} ;
+  </update>
+
+  <select id="QueryProject" parameterType="int" resultMap="Project">
+    SELECT pro_id,pro_name,pro_image,pro_type,pro_dec,pro_src FROM project WHERE pro_id = #{_parameter}
+  </select>
+  
+  <select id="QueryAllProject"  resultMap="Project">
+    SELECT pro_id,pro_name,pro_image,pro_type,pro_dec,pro_src FROM project 
+  </select>
+  
+</mapper>
