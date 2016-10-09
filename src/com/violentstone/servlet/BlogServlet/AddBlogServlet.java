@@ -1,4 +1,4 @@
-package com.violentstone.servlet.ProjectServlet;
+package com.violentstone.servlet.BlogServlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -8,19 +8,21 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.violentstone.Util.DateUtil;
 import com.violentstone.Util.format;
-import com.violentstone.entity.project.Project;
-import com.violentstone.entity.project.ProjectFactory;
-import com.violentstone.service.ProjectService.ProjectService;
-import com.violentstone.service.ProjectService.ProjectServiceFactory;
+import com.violentstone.entity.blog.Blog;
+import com.violentstone.entity.blog.BlogFactory;
+import com.violentstone.service.BlogService.BlogService;
+import com.violentstone.service.BlogService.BlogServiceFactory;
 
-public class AddProjectServlet extends HttpServlet {
+
+public class AddBlogServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public AddProjectServlet() {
+    public AddBlogServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -41,32 +43,31 @@ public class AddProjectServlet extends HttpServlet {
 		
 		PrintWriter pw = response.getWriter();
 		
-		String proName = request.getParameter("proName");
-		String proImages = request.getParameter("proImages");
-		int proType = Integer.valueOf(request.getParameter("proType"));
-		String proDec = request.getParameter("proDec");
-		String proSrc =  request.getParameter("proSrc");
+		String blogImg = request.getParameter("blogImg");
+		String blogTitle = request.getParameter("blogTitle");
+		String publishDate = DateUtil.getDataString();
+		String author = request.getParameter("author");
+		String tag = request.getParameter("tag");
+		String blogContent = request.getParameter("BC");
 		
-		if(format.checkAllString(proName,proImages,proDec,proSrc)&&(proType>=0&&proType<=3)){
+		if(format.checkAllString(blogImg,blogTitle,publishDate,author,tag,blogContent)){
 			
-			Project project = ProjectFactory.getProject(proName, proImages, proType, proDec, proSrc);
+			Blog blog = BlogFactory.getBlog(blogImg, blogTitle, publishDate, author, tag, blogContent);
 			
-			ProjectService ps = ProjectServiceFactory.getProjectService();
+			BlogService BS = BlogServiceFactory.getBlogService();
 			
-			ps.addProject(project);
+			BS.addBlog(blog);
 			
 			pw.print("200");
-			
 			pw.close();
-			
-			//System.out.println(project.toString());
 			
 		}else{
 			
-			pw.print("参数不正确");
+			pw.print("参数错误");
 			pw.close();
-			
+		
 		}
+
 	}
 
 }

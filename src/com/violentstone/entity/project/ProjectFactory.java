@@ -8,7 +8,7 @@ public class ProjectFactory {
 		project = new Project();
 	}
 	
-	public static Project getProject(String proName,String proImages,int proType,String proDec,String proSrc,int... id){
+	public static Project getProject(String proName,String proImages,int proType,String proDec,String proSrc,int... proId){
 		
 		if(project == null)
 			project = new Project();
@@ -18,8 +18,8 @@ public class ProjectFactory {
 		project.setProDec(proDec);
 		project.setProSrc(proSrc);
 		
-		if(id.length == 1){
-			project.setProId(id[0]);
+		if(proId.length == 1){
+			project.setProId(proId[0]);
 		}
 		
 		return project;

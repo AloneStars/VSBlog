@@ -1,28 +1,27 @@
-package com.violentstone.servlet.ProjectServlet;
+package com.violentstone.servlet.BlogServlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 
-import com.violentstone.entity.project.Project;
-import com.violentstone.service.ProjectService.ProjectService;
-import com.violentstone.service.ProjectService.ProjectServiceFactory;
+import com.violentstone.entity.blog.Blog;
+import com.violentstone.service.BlogService.BlogService;
+import com.violentstone.service.BlogService.BlogServiceFactory;
 
-public class QueryAllProjectServlet extends HttpServlet {
+
+public class QueryBlogServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public QueryAllProjectServlet() {
+    public QueryBlogServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -42,19 +41,15 @@ public class QueryAllProjectServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		PrintWriter pw = response.getWriter();
 		
-		ProjectService ps = ProjectServiceFactory.getProjectService();
+        int blogId = Integer.valueOf(request.getParameter("blogId"));
 		
-		List<Project> projectList = ps.queryAllProject();
+		BlogService BS = BlogServiceFactory.getBlogService();
 		
-		JSONArray jsa = new JSONArray();
+		Blog blog = BS.queryBlog(blogId);
 		
-		for (Project project : projectList) {
-			
-			JSONObject js = JSONObject.fromObject(project);
-			jsa.add(js);
-		}
+		JSONObject js = JSONObject.fromObject(blog);
 		
-		pw.print(jsa.toString());
+		pw.print(js.toString());
 		
 	}
 

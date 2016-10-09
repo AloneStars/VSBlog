@@ -11,9 +11,6 @@ import com.violentstone.entity.blog.Blog;
 
 public class BlogImpl extends DBAccess implements IBlog {
 
-    /**
-     * 添加博文
-     */
 	@Override
 	public void addBlog(Blog blog) {
 		
@@ -37,9 +34,6 @@ public class BlogImpl extends DBAccess implements IBlog {
 
 	}
 
-	/**
-	 * 删除博文
-	 */	
 	@Override
 	public void delBlog(int blogId) {
 		
