@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.violentstone.entity.project.Project;
 import com.violentstone.service.ProjectService.ProjectService;
 import com.violentstone.service.ProjectService.ProjectServiceFactory;
 
@@ -41,9 +42,22 @@ public class DelProjectServlet extends HttpServlet {
 		
 		ProjectService ps = ProjectServiceFactory.getProjectService();
 		
-		ps.delProject(proId);
+		Project project = ps.queryProject(proId);
 		
-		pw.print("200");
+		if(project!=null){
+		
+		    ps.delProject(proId);
+		
+		    pw.print("200");
+		    
+		    pw.close();
+		    
+		}else{
+						
+		    pw.print("参数错误");
+		    
+		    pw.close();
+		}
 	}
 
 }

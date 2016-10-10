@@ -1,4 +1,4 @@
-package com.violentstone.servlet.BlogServlet;
+package com.violentstone.servlet.CommentServlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -11,18 +11,21 @@ import javax.servlet.http.HttpServletResponse;
 import com.violentstone.Util.DateUtil;
 import com.violentstone.Util.format;
 import com.violentstone.entity.blog.Blog;
-import com.violentstone.entity.blog.BlogFactory;
+import com.violentstone.entity.comment.Comment;
+import com.violentstone.entity.comment.CommentFactory;
 import com.violentstone.service.BlogService.BlogService;
 import com.violentstone.service.BlogService.BlogServiceFactory;
+import com.violentstone.service.CommentService.CommentService;
+import com.violentstone.service.CommentService.CommentServiceFactory;
 
 
-public class UpdateBlogServlet extends HttpServlet {
+public class AddCommentServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public UpdateBlogServlet() {
+    public AddCommentServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -40,35 +43,35 @@ public class UpdateBlogServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		PrintWriter pw = response.getWriter();
 		
-        PrintWriter pw = response.getWriter();
-        
-        BlogService BS = BlogServiceFactory.getBlogService();
+		String questioner = request.getParameter("ques_er");
+		String email = request.getParameter("email");
+		String questionDate = DateUtil.getDataString();
+		String questionContent = request.getParameter("ques_content");
+		int blogId = Integer.valueOf(request.getParameter("blogId"));
 		
-        int blogId = Integer.valueOf(request.getParameter("blogId"));
-		String blogImg = request.getParameter("blogImg");
-		String blogTitle = request.getParameter("blogTitle");
-		String publishDate = DateUtil.getDataString();
-		String author = request.getParameter("author");
-		String tag = request.getParameter("tag");
-		String blogContent = request.getParameter("BC");
+		BlogService BS = BlogServiceFactory.getBlogService();
+		Blog blog = BS.queryBlog(blogId);
 		
-		Blog  blog = BS.queryBlog(blogId);
-		
-		if(format.checkAllString(blogImg,blogTitle,publishDate,author,tag,blogContent)&&(blog!=null)){
+		if(format.checkAllString(questioner,email,questionDate,questionContent)&&blog!=null){
 			
-			blog = BlogFactory.getBlog(blogImg, blogTitle, publishDate, author, tag, blogContent, blogId);
+			CommentService CS = CommentServiceFactory.getCommentService();
 			
-			BS.updateBlog(blog);
+			Comment comment = CommentFactory.getComment(questioner, email, questionDate, questionContent, blogId);
+			
+			CS.addComment(comment);
 			
 			pw.print("200");
+			
 			pw.close();
 			
 		}else{
 			
 			pw.print("参数错误");
+			
 			pw.close();
-		
+			
 		}
 		
 	}

@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" id="WebApp_ID" version="3.0">
   <display-name>VSBlog</display-name>
-  <!-- 配置UserServlet  -->
   <servlet>
     <description>This is the description of my J2EE component</description>
     <display-name>This is the description of my J2EE component</display-name>
@@ -9,7 +8,6 @@
     <servlet-class>com.violentstone.servlet.UserServlet.LoginServlet</servlet-class>
   </servlet>
   
-  <!-- 配置BLogServlet  -->
   <servlet>
     <description>This is the description of my J2EE component</description>
     <display-name>This is the description of my J2EE component</display-name>
@@ -41,7 +39,6 @@
     <servlet-class>com.violentstone.servlet.BlogServlet.QueryAllBlogServlet</servlet-class>
   </servlet>
   
-  <!-- 配置ProjectServlet  -->
   <servlet>
     <description>This is the description of my J2EE component</description>
     <display-name>This is the description of my J2EE component</display-name>
@@ -74,13 +71,53 @@
   </servlet>
   
   
-  <!-- 配置UserServlet url-pattern -->
+  
+  
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the description of my J2EE component</display-name>
+    <servlet-name>AddCommentServlet</servlet-name>
+    <servlet-class>com.violentstone.servlet.CommentServlet.AddCommentServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the description of my J2EE component</display-name>
+    <servlet-name>DelCommentByBlogServlet</servlet-name>
+    <servlet-class>com.violentstone.servlet.CommentServlet.DelCommentByBlogServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the description of my J2EE component</display-name>
+    <servlet-name>DelCommentByComServlet</servlet-name>
+    <servlet-class>com.violentstone.servlet.CommentServlet.DelCommentByComServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the description of my J2EE component</display-name>
+    <servlet-name>UpdateCommentServlet</servlet-name>
+    <servlet-class>com.violentstone.servlet.CommentServlet.UpdateCommentServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the description of my J2EE component</display-name>
+    <servlet-name>QueryCommentByBlogServlet</servlet-name>
+    <servlet-class>com.violentstone.servlet.CommentServlet.QueryCommentByBlogServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the description of my J2EE component</display-name>
+    <servlet-name>QueryCommentByComServlet</servlet-name>
+    <servlet-class>com.violentstone.servlet.CommentServlet.QueryCommentByComServlet</servlet-class>
+  </servlet>
+  
+  
+  
+  
   <servlet-mapping>
     <servlet-name>LoginServlet</servlet-name>
     <url-pattern>/Login</url-pattern>
   </servlet-mapping>
   
-  <!-- 配置ProjectServlet url-pattern -->
   <servlet-mapping>
     <servlet-name>AddProjectServlet</servlet-name>
     <url-pattern>/AddProject</url-pattern>
@@ -102,7 +139,6 @@
     <url-pattern>/QueryAllProject</url-pattern>
   </servlet-mapping>
   
-  <!-- 配置BlogServlet url-pattern -->
   <servlet-mapping>
     <servlet-name>AddBlogServlet</servlet-name>
     <url-pattern>/AddBlog</url-pattern>
@@ -122,6 +158,31 @@
   <servlet-mapping>
     <servlet-name>QueryAllBlogServlet</servlet-name>
     <url-pattern>/QueryAllBlog</url-pattern>
+  </servlet-mapping>
+  
+  <servlet-mapping>
+    <servlet-name>AddCommentServlet</servlet-name>
+    <url-pattern>/AddComment</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>DelCommentByBlogServlet</servlet-name>
+    <url-pattern>/DelCommentByBlog</url-pattern>
+  </servlet-mapping>
+    <servlet-mapping>
+    <servlet-name>DelCommentByComServlet</servlet-name>
+    <url-pattern>/DelCommentByCom</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>UpdateCommentServlet</servlet-name>
+    <url-pattern>/UpdateComment</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>QueryCommentByBlogServlet</servlet-name>
+    <url-pattern>/QueryCommentByBlog</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>QueryCommentByComServlet</servlet-name>
+    <url-pattern>/QueryCommentByCom</url-pattern>
   </servlet-mapping>
   
   <welcome-file-list>

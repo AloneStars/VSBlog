@@ -1,4 +1,4 @@
-package com.violentstone.servlet.BlogServlet;
+package com.violentstone.servlet.CommentServlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -8,17 +8,19 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.violentstone.entity.blog.Blog;
-import com.violentstone.service.BlogService.BlogService;
-import com.violentstone.service.BlogService.BlogServiceFactory;
 
-public class DelBlogServlet extends HttpServlet {
+import com.violentstone.entity.comment.Comment;
+import com.violentstone.service.CommentService.CommentService;
+import com.violentstone.service.CommentService.CommentServiceFactory;
+
+
+public class DelCommentByComServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public DelBlogServlet() {
+    public DelCommentByComServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -37,30 +39,28 @@ public class DelBlogServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		
-		PrintWriter pw = response.getWriter();
-	
-		int blogId = Integer.valueOf(request.getParameter("blogId"));
+        PrintWriter pw = response.getWriter();
 		
-		BlogService BS = BlogServiceFactory.getBlogService();
+		int comId = Integer.valueOf(request.getParameter("comId"));
 		
-		Blog blog = BS.queryBlog(blogId);
+		CommentService CS = CommentServiceFactory.getCommentService();
 		
-		if(blog!=null){
+		Comment comment = CS.queryCommentByCom(comId);
 		
-		   BS.delBlog(blogId);
-		
-		   pw.print("200");
-		
-		   pw.close();
-		   
+		if(comment != null){
+						
+			CS.delCommentByCom(comId);
+			
+            pw.print("200");
+			
+			pw.close();
+			
 		}else{
 			
 			pw.print("参数错误");
 			
 			pw.close();
-			
 		}
-		
 	}
 
 }

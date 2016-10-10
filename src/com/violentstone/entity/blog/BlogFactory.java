@@ -10,6 +10,9 @@ public class BlogFactory {
 	
 	public static Blog getBlog(String blogImg,String blogTitle,String publishDate,String author,String tag,String blogContent,int... blogId){
 		
+		
+		if(blog == null)
+			blog = new Blog();
 		blog.setBlogImg(blogImg);
 		blog.setBlogTitle(blogTitle);
 		blog.setPublishDate(publishDate);

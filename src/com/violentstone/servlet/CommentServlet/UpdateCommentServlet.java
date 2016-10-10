@@ -1,26 +1,28 @@
-package com.violentstone.servlet.ProjectServlet;
+package com.violentstone.servlet.CommentServlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
+
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.violentstone.Util.DateUtil;
 import com.violentstone.Util.format;
-import com.violentstone.entity.project.Project;
-import com.violentstone.entity.project.ProjectFactory;
-import com.violentstone.service.ProjectService.ProjectService;
-import com.violentstone.service.ProjectService.ProjectServiceFactory;
+import com.violentstone.entity.comment.Comment;
+import com.violentstone.entity.comment.CommentFactory;
+import com.violentstone.service.CommentService.CommentService;
+import com.violentstone.service.CommentService.CommentServiceFactory;
 
-public class UpdateProjectServlet extends HttpServlet {
+public class UpdateCommentServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public UpdateProjectServlet() {
+    public UpdateCommentServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -38,39 +40,36 @@ public class UpdateProjectServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		
         PrintWriter pw = response.getWriter();
         
-        ProjectService ps = ProjectServiceFactory.getProjectService();
+        CommentService CS = CommentServiceFactory.getCommentService();
 		
-        int proId = Integer.valueOf(request.getParameter("proId"));
-		String proName = request.getParameter("proName");
-		String proImages = request.getParameter("proImages");
-		int proType = Integer.valueOf(request.getParameter("proType"));
-		String proDec = request.getParameter("proDec");
-		String proSrc =  request.getParameter("proSrc");
+		String questioner = request.getParameter("ques_er");
+		String email = request.getParameter("email");
+		String questionDate = DateUtil.getDataString();
+		String questionContent = request.getParameter("ques_content");
+		int blogId = Integer.valueOf(request.getParameter("blogId"));
+		int comId = Integer.valueOf(request.getParameter("comId"));
 		
-		Project project = ps.queryProject(proId);
+		Comment comment = CS.queryCommentByCom(comId);
 		
-		if(format.checkAllString(proName,proImages,proDec,proSrc)&&(proType>=0&&proType<=3)&&(project!=null)){
+		if(format.checkAllString(questioner,email,questionDate,questionContent)&&(comment!=null)){			
 			
-			project = ProjectFactory.getProject(proName, proImages, proType, proDec, proSrc, proId);		
+			comment = CommentFactory.getComment(questioner, email, questionDate, questionContent, blogId,comId);
 			
-			ps.updateProject(project);
+			CS.updateComment(comment);
 			
 			pw.print("200");
 			
 			pw.close();
 			
-			//System.out.println(project.toString());
-			
 		}else{
 			
-			pw.print("参数不正确");
+			pw.print("参数错误");
+			
 			pw.close();
 			
 		}
-	    
 	}
 
 }
