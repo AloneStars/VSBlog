@@ -1,172 +1,203 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" id="WebApp_ID" version="3.0">
   <display-name>VSBlog</display-name>
+  
   <servlet>
     <description>This is the description of my J2EE component</description>
     <display-name>This is the description of my J2EE component</display-name>
     <servlet-name>LoginServlet</servlet-name>
     <servlet-class>com.violentstone.servlet.UserServlet.LoginServlet</servlet-class>
   </servlet>
+  
   <servlet>
     <description>This is the description of my J2EE component</description>
     <display-name>This is the description of my J2EE component</display-name>
     <servlet-name>AddBlogServlet</servlet-name>
     <servlet-class>com.violentstone.servlet.BlogServlet.AddBlogServlet</servlet-class>
   </servlet>
+  
   <servlet>
     <description>This is the description of my J2EE component</description>
     <display-name>This is the description of my J2EE component</display-name>
     <servlet-name>DelBlogServlet</servlet-name>
     <servlet-class>com.violentstone.servlet.BlogServlet.DelBlogServlet</servlet-class>
   </servlet>
+  
   <servlet>
     <description>This is the description of my J2EE component</description>
     <display-name>This is the description of my J2EE component</display-name>
     <servlet-name>UpdateBlogServlet</servlet-name>
     <servlet-class>com.violentstone.servlet.BlogServlet.UpdateBlogServlet</servlet-class>
   </servlet>
+  
   <servlet>
     <description>This is the description of my J2EE component</description>
     <display-name>This is the description of my J2EE component</display-name>
     <servlet-name>QueryBlogServlet</servlet-name>
     <servlet-class>com.violentstone.servlet.BlogServlet.QueryBlogServlet</servlet-class>
   </servlet>
+  
   <servlet>
     <description>This is the description of my J2EE component</description>
     <display-name>This is the description of my J2EE component</display-name>
     <servlet-name>QueryAllBlogServlet</servlet-name>
     <servlet-class>com.violentstone.servlet.BlogServlet.QueryAllBlogServlet</servlet-class>
   </servlet>
+  
   <servlet>
     <description>This is the description of my J2EE component</description>
     <display-name>This is the description of my J2EE component</display-name>
     <servlet-name>AddProjectServlet</servlet-name>
     <servlet-class>com.violentstone.servlet.ProjectServlet.AddProjectServlet</servlet-class>
   </servlet>
+  
   <servlet>
     <description>This is the description of my J2EE component</description>
     <display-name>This is the description of my J2EE component</display-name>
     <servlet-name>DelProjectServlet</servlet-name>
     <servlet-class>com.violentstone.servlet.ProjectServlet.DelProjectServlet</servlet-class>
   </servlet>
+  
   <servlet>
     <description>This is the description of my J2EE component</description>
     <display-name>This is the description of my J2EE component</display-name>
     <servlet-name>UpdateProjectServlet</servlet-name>
     <servlet-class>com.violentstone.servlet.ProjectServlet.UpdateProjectServlet</servlet-class>
   </servlet>
+  
   <servlet>
     <description>This is the description of my J2EE component</description>
     <display-name>This is the description of my J2EE component</display-name>
     <servlet-name>QueryProjectServlet</servlet-name>
     <servlet-class>com.violentstone.servlet.ProjectServlet.QueryProjectServlet</servlet-class>
   </servlet>
+  
   <servlet>
     <description>This is the description of my J2EE component</description>
     <display-name>This is the description of my J2EE component</display-name>
     <servlet-name>QueryAllProjectServlet</servlet-name>
     <servlet-class>com.violentstone.servlet.ProjectServlet.QueryAllProjectServlet</servlet-class>
   </servlet>
+  
   <servlet>
     <description>This is the description of my J2EE component</description>
     <display-name>This is the description of my J2EE component</display-name>
     <servlet-name>AddCommentServlet</servlet-name>
     <servlet-class>com.violentstone.servlet.CommentServlet.AddCommentServlet</servlet-class>
   </servlet>
+  
   <servlet>
     <description>This is the description of my J2EE component</description>
     <display-name>This is the description of my J2EE component</display-name>
     <servlet-name>DelCommentByBlogServlet</servlet-name>
     <servlet-class>com.violentstone.servlet.CommentServlet.DelCommentByBlogServlet</servlet-class>
   </servlet>
+  
   <servlet>
     <description>This is the description of my J2EE component</description>
     <display-name>This is the description of my J2EE component</display-name>
     <servlet-name>DelCommentByComServlet</servlet-name>
     <servlet-class>com.violentstone.servlet.CommentServlet.DelCommentByComServlet</servlet-class>
   </servlet>
+  
   <servlet>
     <description>This is the description of my J2EE component</description>
     <display-name>This is the description of my J2EE component</display-name>
     <servlet-name>UpdateCommentServlet</servlet-name>
     <servlet-class>com.violentstone.servlet.CommentServlet.UpdateCommentServlet</servlet-class>
   </servlet>
+  
   <servlet>
     <description>This is the description of my J2EE component</description>
     <display-name>This is the description of my J2EE component</display-name>
     <servlet-name>QueryCommentByBlogServlet</servlet-name>
     <servlet-class>com.violentstone.servlet.CommentServlet.QueryCommentByBlogServlet</servlet-class>
   </servlet>
+  
   <servlet>
     <description>This is the description of my J2EE component</description>
     <display-name>This is the description of my J2EE component</display-name>
     <servlet-name>QueryCommentByComServlet</servlet-name>
     <servlet-class>com.violentstone.servlet.CommentServlet.QueryCommentByComServlet</servlet-class>
   </servlet>
+  
   <servlet>
     <description>This is the description of my J2EE component</description>
     <display-name>This is the description of my J2EE component</display-name>
     <servlet-name>AddReplyServlet</servlet-name>
     <servlet-class>com.violentstone.servlet.ReplyServlet.AddReplyServlet</servlet-class>
   </servlet>
+  
   <servlet>
     <description>This is the description of my J2EE component</description>
     <display-name>This is the description of my J2EE component</display-name>
     <servlet-name>DelReplyByComServlet</servlet-name>
     <servlet-class>com.violentstone.servlet.ReplyServlet.DelReplyByComServlet</servlet-class>
   </servlet>
+  
   <servlet>
     <description>This is the description of my J2EE component</description>
     <display-name>This is the description of my J2EE component</display-name>
     <servlet-name>DelReplyByRlyServlet</servlet-name>
     <servlet-class>com.violentstone.servlet.ReplyServlet.DelReplyByRlyServlet</servlet-class>
   </servlet>
+  
   <servlet>
     <description>This is the description of my J2EE component</description>
     <display-name>This is the description of my J2EE component</display-name>
     <servlet-name>UpdateReplyServlet</servlet-name>
     <servlet-class>com.violentstone.servlet.ReplyServlet.UpdateReplyServlet</servlet-class>
   </servlet>
+   
   <servlet>
     <description>This is the description of my J2EE component</description>
     <display-name>This is the description of my J2EE component</display-name>
-    <servlet-name>QueryReplytByComServlet</servlet-name>
+    <servlet-name>QueryReplyByComServlet</servlet-name>
     <servlet-class>com.violentstone.servlet.ReplyServlet.QueryReplyByComServlet</servlet-class>
   </servlet>
+  
   <servlet>
     <description>This is the description of my J2EE component</description>
     <display-name>This is the description of my J2EE component</display-name>
     <servlet-name>QueryReplyByRlyServlet</servlet-name>
     <servlet-class>com.violentstone.servlet.ReplyServlet.QueryReplyByRlyServlet</servlet-class>
   </servlet>
+  
   <servlet-mapping>
     <servlet-name>LoginServlet</servlet-name>
     <url-pattern>/Login</url-pattern>
   </servlet-mapping>
+  
   <servlet-mapping>
     <servlet-name>AddProjectServlet</servlet-name>
     <url-pattern>/AddProject</url-pattern>
   </servlet-mapping>
+  
   <servlet-mapping>
     <servlet-name>DelProjectServlet</servlet-name>
     <url-pattern>/DelProject</url-pattern>
   </servlet-mapping>
+  
   <servlet-mapping>
     <servlet-name>UpdateProjectServlet</servlet-name>
     <url-pattern>/UpdateProject</url-pattern>
   </servlet-mapping>
+  
   <servlet-mapping>
     <servlet-name>QueryProjectServlet</servlet-name>
     <url-pattern>/QueryProject</url-pattern>
   </servlet-mapping>
+  
   <servlet-mapping>
     <servlet-name>QueryAllProjectServlet</servlet-name>
     <url-pattern>/QueryAllProject</url-pattern>
   </servlet-mapping>
+  
   <servlet-mapping>
     <servlet-name>AddBlogServlet</servlet-name>
     <url-pattern>/AddBlog</url-pattern>
   </servlet-mapping>
+  
   <servlet-mapping>
     <servlet-name>DelBlogServlet</servlet-name>
     <url-pattern>/DelBlog</url-pattern>
@@ -183,6 +214,7 @@
     <servlet-name>QueryAllBlogServlet</servlet-name>
     <url-pattern>/QueryAllBlog</url-pattern>
   </servlet-mapping>
+  
   <servlet-mapping>
     <servlet-name>AddCommentServlet</servlet-name>
     <url-pattern>/AddComment</url-pattern>
@@ -207,10 +239,11 @@
     <servlet-name>QueryCommentByComServlet</servlet-name>
     <url-pattern>/QueryCommentByCom</url-pattern>
   </servlet-mapping>
+  
   <servlet-mapping>
     <servlet-name>AddReplyServlet</servlet-name>
     <url-pattern>/AddReply</url-pattern>
-  </servlet-mapping>
+  </servlet-mapping> 
   <servlet-mapping>
     <servlet-name>DelReplyByComServlet</servlet-name>
     <url-pattern>/DelReplyByCom</url-pattern>
@@ -224,14 +257,17 @@
     <url-pattern>/UpdateReply</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
-    <servlet-name>QueryReplyByRlyServlet</servlet-name>
-    <url-pattern>/QueryReplyByRly</url-pattern>
-  </servlet-mapping>
-  <servlet-mapping>
     <servlet-name>QueryReplyByComServlet</servlet-name>
     <url-pattern>/QueryReplyByCom</url-pattern>
   </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>QueryReplyByRlyServlet</servlet-name>
+    <url-pattern>/QueryReplyByRly</url-pattern>
+  </servlet-mapping>
+  
+  
   <welcome-file-list>
     <welcome-file>index.jsp</welcome-file>
   </welcome-file-list>
+  
 </web-app>
