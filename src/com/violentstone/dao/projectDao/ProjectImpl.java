@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
 
+import com.violentstone.Interface.IComment;
 import com.violentstone.Interface.IProject;
 import com.violentstone.Util.DBAccess;
 import com.violentstone.entity.project.Project;
@@ -21,7 +22,9 @@ public class ProjectImpl extends DBAccess implements IProject {
         try {
 			sqlSession = this.getSqlSession();
 			
-			sqlSession.insert("Project.AddProject", project);
+			IProject iproject = sqlSession.getMapper(IProject.class);
+			
+			iproject.addProject(project);
 			
 			sqlSession.commit();
 			
@@ -46,7 +49,9 @@ public class ProjectImpl extends DBAccess implements IProject {
         try {
 			sqlSession = this.getSqlSession();
 			
-			sqlSession.delete("Project.DelProject", proId);
+			IProject iproject = sqlSession.getMapper(IProject.class);
+			
+			iproject.delProject(proId);
 			
 			sqlSession.commit();
 			
@@ -71,7 +76,9 @@ public class ProjectImpl extends DBAccess implements IProject {
         try {
 			sqlSession = this.getSqlSession();
 			
-			sqlSession.update("Project.UpdateProject", project);
+			IProject iproject = sqlSession.getMapper(IProject.class);
+			
+			iproject.updateProject(project);
 			
 			sqlSession.commit();
 			
@@ -99,7 +106,9 @@ public class ProjectImpl extends DBAccess implements IProject {
 		try {
 			sqlSession = this.getSqlSession();
 			
-			project = sqlSession.selectOne("Project.QueryProject", proId);
+			IProject iproject = sqlSession.getMapper(IProject.class);
+			
+			project = iproject.queryProject(proId);
 			
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
@@ -125,7 +134,9 @@ public class ProjectImpl extends DBAccess implements IProject {
 		try {
 			sqlSession = this.getSqlSession();
 			
-			projectList = sqlSession.selectList("Project.QueryAllProject");
+			IProject iproject = sqlSession.getMapper(IProject.class);
+			
+			projectList = iproject.queryAllProject();
 			
 		} catch (IOException e) {
 			// TODO Auto-generated catch block

@@ -21,7 +21,7 @@
     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="Blog">
+<mapper namespace="com.violentstone.Interface.IBlog">
 
   <resultMap type="com.violentstone.entity.blog.Blog" id="Blog">
     <id column="blog_id" jdbcType="INTEGER" property="blogId"/>
@@ -34,18 +34,18 @@
     <collection property="CommentList" resultMap="Comment.Comment"/>
   </resultMap>
   
-  <insert id="AddBlog" parameterType="com.violentstone.entity.blog.Blog">
+  <insert id="addBlog" parameterType="com.violentstone.entity.blog.Blog">
       INSERT INTO blog(blog_img,blog_title,publish_date,author,tag,blog_content) VALUES(#{blogImg},#{blogTitle},#{publishDate},#{author},#{tag},#{blogContent})
   </insert>
   
-  <delete id="DelBlog" parameterType="INTEGER">
+  <delete id="delBlog" parameterType="INTEGER">
       DELETE FROM blog 
       <where>
       	blog_id = #{_parameter}
       </where>
   </delete>
   
-  <update id="UpdateBlog" parameterType="com.violentstone.entity.blog.Blog">
+  <update id="updateBlog" parameterType="com.violentstone.entity.blog.Blog">
       UPDATE blog 
       <set>
       	 blog_img = #{blogImg} , blog_title = #{blogTitle} , publish_date = #{publishDate} , author = #{author} , tag = #{tag} , blog_content = #{blogContent}
@@ -55,18 +55,18 @@
       </where>
   </update>
 
-  <select id="QueryBlog" parameterType="int" resultMap="Blog">
+  <select id="queryBlog" parameterType="int" resultMap="Blog">
     SELECT blog_id,blog_img,blog_title,publish_date,author,tag,blog_content FROM blog
     <where>
     	blog_id = #{_parameter}
     </where> 
   </select>
   
-  <select id="QueryAllBlog"  resultMap="Blog">
+  <select id="queryAllBlog"  resultMap="Blog">
     SELECT blog_id,blog_img,blog_title,publish_date,author,tag,blog_content FROM blog
   </select>
   
-  <select id="QueryDetails" parameterType="int" resultMap="Blog">
+ <!--  <select id="QueryDetails" parameterType="int" resultMap="Blog">
   	SELECT B.blog_id B_ID,blog_img,blog_title,publish_date,author,tag,blog_content,com_id,questioner,question_date,email,question_content,D.blog_id D_ID,answer,answer_date,answer_content,R_ID
   	       FROM blog AS B join 
   	       (select Comment.com_id,questioner,question_date,email,question_content,blog_id,answer,answer_date,answer_content,Reply.com_id R_ID
@@ -76,6 +76,6 @@
   	<where>
   		B.blog_id = #{_parameter}
   	</where>
-  </select>
+  </select> -->
   
 </mapper>

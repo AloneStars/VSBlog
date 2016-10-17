@@ -21,7 +21,9 @@ public class BlogImpl extends DBAccess implements IBlog {
 		try {
 			sqlSession = this.getSqlSession();
 			
-			sqlSession.insert("Blog.AddBlog", blog);
+			IBlog iblog = sqlSession.getMapper(IBlog.class);
+			
+			iblog.addBlog(blog);
 			
 			sqlSession.commit();
 			
@@ -44,7 +46,9 @@ public class BlogImpl extends DBAccess implements IBlog {
 		try {
 			sqlSession = this.getSqlSession();
 			
-			sqlSession.delete("Blog.DelBlog", blogId);
+			IBlog iblog = sqlSession.getMapper(IBlog.class);
+			
+			iblog.delBlog(blogId);
 			
 			sqlSession.commit();
 			
@@ -67,7 +71,9 @@ public class BlogImpl extends DBAccess implements IBlog {
 		try {
 			sqlSession = this.getSqlSession();
 			
-			sqlSession.update("Blog.UpdateBlog", blog);
+			IBlog iblog = sqlSession.getMapper(IBlog.class);
+			
+			iblog.updateBlog(blog);
 			
 			sqlSession.commit();
 			
@@ -93,7 +99,9 @@ public class BlogImpl extends DBAccess implements IBlog {
 		try {
 			sqlSession = this.getSqlSession();
 			
-			blog = sqlSession.selectOne("Blog.QueryBlog", blogId);
+			IBlog iblog = sqlSession.getMapper(IBlog.class);
+			
+			blog = iblog.queryBlog(blogId);
 			
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
@@ -116,7 +124,9 @@ public class BlogImpl extends DBAccess implements IBlog {
 		try {
 			sqlSession = this.getSqlSession();
 			
-			blogList = sqlSession.selectList("Blog.QueryAllBlog");
+			IBlog iblog = sqlSession.getMapper(IBlog.class);
+			
+			blogList = iblog.queryAllBlog();
 			
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
@@ -130,7 +140,7 @@ public class BlogImpl extends DBAccess implements IBlog {
 		return blogList;
 	}
 	
-	@Override
+/*	@Override
 	public List<Blog> queryDetails(int blogId) {
 		// TODO Auto-generated method stub
         SqlSession sqlSession = null;
@@ -152,7 +162,7 @@ public class BlogImpl extends DBAccess implements IBlog {
 		}
 		return blogList;
 				
-	}
+	}*/
 	
 	public static void main(String[] args) {
 		
@@ -162,7 +172,7 @@ public class BlogImpl extends DBAccess implements IBlog {
 		
 		List<Blog> blogList = null;
 		
-		List<Comment> commentList = null;
+/*		List<Comment> commentList = null;
 		
 		List<Reply> replyList = null;
 		
@@ -193,17 +203,17 @@ public class BlogImpl extends DBAccess implements IBlog {
 				
 			}
 			
-		}
+		}*/
 		
 		/*1.添加博客*/
-		/*blog.setBlogImg("images/blog/blog-1.jpg,images/blog/blog-2.jpg,images/blog/blog-3.jpg");
+		blog.setBlogImg("images/blog/blog-1.jpg,images/blog/blog-2.jpg,images/blog/blog-3.jpg");
 		blog.setBlogTitle("论java中“==”与equals的区别");
 		blog.setPublishDate("January 31, 2014");
 		blog.setAuthor("ViolentStone");
 		blog.setTag("java");
 		blog.setBlogContent("我咋知道吗？你又没告诉我");
 		
-		bi.addBlog(blog);*/
+		bi.addBlog(blog);
 		
 		/*2.查询单个博文*/
 		/*blog = bi.queryBlog(1);

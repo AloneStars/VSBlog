@@ -41,6 +41,6 @@ public interface IBlog {
 	 * 查询所有博客类容
 	 * @return List<Blog>
 	 */
-	public List<Blog> queryDetails(int blogId);
+	/*public List<Blog> queryDetails(int blogId);*/
 	
 }

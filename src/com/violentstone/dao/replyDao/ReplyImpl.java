@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
 
+import com.violentstone.Interface.IProject;
 import com.violentstone.Interface.IReply;
 import com.violentstone.Util.DBAccess;
 import com.violentstone.entity.comment.Comment;
@@ -19,6 +20,10 @@ public class ReplyImpl extends DBAccess implements IReply {
 		
 		try {
 			sqlSession  = this.getSqlSession();
+			
+			IReply ireply = sqlSession.getMapper(IReply.class);
+			
+			ireply.addReply(reply);
 			
 			sqlSession.insert("Reply.AddReply",reply);
 			
@@ -43,7 +48,9 @@ public class ReplyImpl extends DBAccess implements IReply {
 		try {
 			sqlSession = this.getSqlSession();
 			
-			sqlSession.delete("Reply.DelReplyByRly", rlyId);
+			IReply ireply = sqlSession.getMapper(IReply.class);
+			
+			ireply.delReplyByRly(rlyId);
 			
 			sqlSession.commit();
 			
@@ -66,7 +73,9 @@ public class ReplyImpl extends DBAccess implements IReply {
 		try {
 			sqlSession = this.getSqlSession();
 			
-			sqlSession.delete("Reply.DelReplyByCom", comId);
+			IReply ireply = sqlSession.getMapper(IReply.class);
+			
+			ireply.delReplyByCom(comId);
 			
 			sqlSession.commit();
 			
@@ -90,7 +99,9 @@ public class ReplyImpl extends DBAccess implements IReply {
 		try {
 			sqlSession = this.getSqlSession();
 			
-			sqlSession.update("Reply.UpdateReply", reply);
+			IReply ireply = sqlSession.getMapper(IReply.class);
+			
+			ireply.updateReply(reply);
 			
 			sqlSession.commit();
 			
@@ -116,7 +127,9 @@ public class ReplyImpl extends DBAccess implements IReply {
 		try {
 			sqlSession = this.getSqlSession();
 			
-			reply = sqlSession.selectOne("Reply.QueryReplyByRly", rlyId);
+			IReply ireply = sqlSession.getMapper(IReply.class);
+			
+			reply = ireply.queryReplyByRly(rlyId);
 
 		}catch (IOException e) {
 			// TODO Auto-generated catch block
@@ -140,7 +153,9 @@ public class ReplyImpl extends DBAccess implements IReply {
 			
 			sqlSession = this.getSqlSession();
 			
-			replyList = sqlSession.selectList("Reply.QueryReplyByCom", comId);
+			IReply ireply = sqlSession.getMapper(IReply.class);
+			
+			replyList = ireply.queryReplyByCom(comId);
 
 		} catch (IOException e) {
 			// TODO Auto-generated catch block

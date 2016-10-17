@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
 
+import com.violentstone.Interface.IBlog;
 import com.violentstone.Interface.IComment;
 import com.violentstone.Util.DBAccess;
 import com.violentstone.entity.comment.Comment;
@@ -19,7 +20,9 @@ public class CommentImpl extends DBAccess implements IComment {
 		try {
 			sqlSession  = this.getSqlSession();
 			
-			sqlSession.insert("Comment.AddComment",comment);
+			IComment icomment = sqlSession.getMapper(IComment.class);
+			
+			icomment.addComment(comment);
 			
 			sqlSession.commit();
 			
@@ -41,7 +44,9 @@ public class CommentImpl extends DBAccess implements IComment {
 		try {
 			sqlSession = this.getSqlSession();
 			
-			sqlSession.delete("Comment.DelCommentByCom", comId);
+			IComment icomment = sqlSession.getMapper(IComment.class);
+			
+			icomment.delCommentByCom(comId);
 			
 			sqlSession.commit();
 			
@@ -64,7 +69,9 @@ public class CommentImpl extends DBAccess implements IComment {
 		try {
 			sqlSession = this.getSqlSession();
 			
-			sqlSession.delete("Comment.DelCommentByBlog", blogId);
+			IComment icomment = sqlSession.getMapper(IComment.class);
+			
+			icomment.delCommentByBlog(blogId);
 			
 			sqlSession.commit();
 			
@@ -87,7 +94,9 @@ public class CommentImpl extends DBAccess implements IComment {
 		try {
 			sqlSession = this.getSqlSession();
 			
-			sqlSession.update("Comment.UpdateComment", comment);
+			IComment icomment = sqlSession.getMapper(IComment.class);
+			
+			icomment.updateComment(comment);
 			
 			sqlSession.commit();
 			
@@ -113,7 +122,9 @@ public class CommentImpl extends DBAccess implements IComment {
 		try {
 			sqlSession = this.getSqlSession();
 			
-			comment = sqlSession.selectOne("Comment.QueryCommentByCom", comId);
+			IComment icomment = sqlSession.getMapper(IComment.class);
+			
+			comment = icomment.queryCommentByCom(comId);
 
 		}catch (IOException e) {
 			// TODO Auto-generated catch block
@@ -138,7 +149,9 @@ public class CommentImpl extends DBAccess implements IComment {
 			
 			sqlSession = this.getSqlSession();
 			
-			commentList = sqlSession.selectList("Comment.QueryCommentByBlog", blogId);
+			IComment icomment = sqlSession.getMapper(IComment.class);
+			
+			commentList = icomment.queryCommentByBlog(blogId);
 
 		} catch (IOException e) {
 			// TODO Auto-generated catch block

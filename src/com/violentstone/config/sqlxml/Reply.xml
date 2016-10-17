@@ -21,7 +21,7 @@
     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="Reply">
+<mapper namespace="com.violentstone.Interface.IReply">
 
   <resultMap type="com.violentstone.entity.reply.Reply" id="Reply">
     <id column="rly_id" jdbcType="INTEGER" property="rlyId"/>
@@ -31,27 +31,27 @@
     <result column="com_id" jdbcType="INTEGER" property="comId"/>
   </resultMap>
   
-  <insert id="AddReply" parameterType="com.violentstone.entity.reply.Reply">
+  <insert id="addReply" parameterType="com.violentstone.entity.reply.Reply">
       INSERT INTO reply(answer,answer_date,answer_content,com_id) VALUES(#{answer},#{answerDate},#{answerContent},#{comId})
   </insert>
   
-  <delete id="DelReplyByRly" parameterType="INTEGER">
+  <delete id="delReplyByRly" parameterType="INTEGER">
       DELETE FROM reply WHERE rly_id = #{_parameter}
   </delete>
   
-  <delete id="DelReplyByCom" parameterType="INTEGER">
+  <delete id="delReplyByCom" parameterType="INTEGER">
       DELETE FROM reply WHERE com_id = #{_parameter}
   </delete>
   
-  <update id="UpdateReply" parameterType="com.violentstone.entity.reply.Reply">
+  <update id="updateReply" parameterType="com.violentstone.entity.reply.Reply">
       UPDATE reply set answer = #{answer} , answer_date = #{answerDate} , answer_content = #{answerContent} , com_id = #{comId} WHERE rly_id = #{rlyId}
   </update>
   
-  <select id="QueryReplyByRly" parameterType="int" resultMap="Reply">
+  <select id="queryReplyByRly" parameterType="int" resultMap="Reply">
     SELECT rly_id,answer,answer_date,answer_content,com_id FROM reply WHERE rly_id = #{_parameter}
   </select>
   
-  <select id="QueryReplyByCom" parameterType="int"  resultMap="Reply">
+  <select id="queryReplyByCom" parameterType="int"  resultMap="Reply">
     SELECT rly_id,answer,answer_date,answer_content,com_id FROM reply WHERE com_id = #{_parameter}
   </select>
   

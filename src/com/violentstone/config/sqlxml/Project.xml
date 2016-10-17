@@ -21,7 +21,7 @@
     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="Project">
+<mapper namespace="com.violentstone.Interface.IProject">
 
   <resultMap type="com.violentstone.entity.project.Project" id="Project">
     <id column="pro_id" jdbcType="INTEGER" property="proId"/>
@@ -32,23 +32,23 @@
     <result column="pro_src" jdbcType="VARCHAR" property="proSrc"/>
   </resultMap>
   
-  <insert id="AddProject" parameterType="com.violentstone.entity.project.Project">
+  <insert id="addProject" parameterType="com.violentstone.entity.project.Project">
       INSERT INTO project(pro_name,pro_image,pro_type,pro_dec,pro_src) VALUES(#{proName},#{proImage},#{proType},#{proDec},#{proSrc})
   </insert>
   
-  <delete id="DelProject" parameterType="INTEGER">
+  <delete id="delProject" parameterType="INTEGER">
       DELETE FROM project WHERE pro_id = #{_parameter}
   </delete>
   
-  <update id="UpdateProject" parameterType="com.violentstone.entity.project.Project">
+  <update id="updateProject" parameterType="com.violentstone.entity.project.Project">
       UPDATE project set pro_name = #{proName} , pro_image = #{proImage} , pro_type = #{proType} , pro_dec = #{proDec} , pro_src = #{proSrc} where pro_id = #{proId} ;
   </update>
 
-  <select id="QueryProject" parameterType="int" resultMap="Project">
+  <select id="queryProject" parameterType="int" resultMap="Project">
     SELECT pro_id,pro_name,pro_image,pro_type,pro_dec,pro_src FROM project WHERE pro_id = #{_parameter}
   </select>
   
-  <select id="QueryAllProject"  resultMap="Project">
+  <select id="queryAllProject"  resultMap="Project">
     SELECT pro_id,pro_name,pro_image,pro_type,pro_dec,pro_src FROM project 
   </select>
   

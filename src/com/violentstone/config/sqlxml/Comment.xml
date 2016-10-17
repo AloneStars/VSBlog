@@ -21,7 +21,7 @@
     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="Comment">
+<mapper namespace="com.violentstone.Interface.IComment">
 
   <resultMap type="com.violentstone.entity.comment.Comment" id="Comment">
     <id column="com_id" jdbcType="INTEGER" property="comId"/>
@@ -33,27 +33,27 @@
     <collection property="replyList" resultMap="Reply.reply"/>
   </resultMap>
   
-  <insert id="AddComment" parameterType="com.violentstone.entity.comment.Comment">
+  <insert id="addComment" parameterType="com.violentstone.entity.comment.Comment">
       INSERT INTO comment(questioner,question_date,email,question_content,blog_id) VALUES(#{questioner},#{questionDate},#{email},#{questionContent},#{blogId})
   </insert>
   
-  <delete id="DelCommentByCom" parameterType="INTEGER">
+  <delete id="delCommentByCom" parameterType="INTEGER">
       DELETE FROM comment WHERE com_id = #{_parameter}
   </delete>
   
-  <delete id="DelCommentByBlog" parameterType="INTEGER">
+  <delete id="delCommentByBlog" parameterType="INTEGER">
       DELETE FROM comment WHERE blog_id = #{_parameter}
   </delete>
   
-  <update id="UpdateComment" parameterType="com.violentstone.entity.comment.Comment">
+  <update id="updateComment" parameterType="com.violentstone.entity.comment.Comment">
       UPDATE comment set questioner = #{questioner} , question_date = #{questionDate} , email = #{email}, question_content = #{questionContent} , blog_id = #{blogId} WHERE com_id = #{comId}
   </update>
   
-  <select id="QueryCommentByCom" parameterType="int" resultMap="Comment">
+  <select id="queryCommentByCom" parameterType="int" resultMap="Comment">
     SELECT com_id,questioner,question_date,email,question_content,blog_id FROM comment WHERE com_id = #{_parameter}
   </select>
   
-  <select id="QueryCommentByBlog" parameterType="int"  resultMap="Comment">
+  <select id="queryCommentByBlog" parameterType="int"  resultMap="Comment">
     SELECT com_id,questioner,question_date,email,question_content,blog_id FROM comment WHERE blog_id = #{_parameter}
   </select>
   
