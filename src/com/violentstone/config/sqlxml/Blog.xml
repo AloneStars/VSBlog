@@ -31,6 +31,7 @@
     <result column="author" jdbcType="VARCHAR" property="author"/>
     <result column="tag" jdbcType="VARCHAR" property="tag"/>
     <result column="blog_content" jdbcType="VARCHAR" property="blogContent"/>
+    <collection property="CommentList" resultMap="Comment.Comment"/>
   </resultMap>
   
   <insert id="AddBlog" parameterType="com.violentstone.entity.blog.Blog">
@@ -38,19 +39,43 @@
   </insert>
   
   <delete id="DelBlog" parameterType="INTEGER">
-      DELETE FROM blog WHERE blog_id = #{_parameter}
+      DELETE FROM blog 
+      <where>
+      	blog_id = #{_parameter}
+      </where>
   </delete>
   
   <update id="UpdateBlog" parameterType="com.violentstone.entity.blog.Blog">
-      UPDATE blog set blog_img = #{blogImg} , blog_title = #{blogTitle} , publish_date = #{publishDate} , author = #{author} , tag = #{tag} , blog_content = #{blogContent} where blog_id = #{blogId} ;
+      UPDATE blog 
+      <set>
+      	 blog_img = #{blogImg} , blog_title = #{blogTitle} , publish_date = #{publishDate} , author = #{author} , tag = #{tag} , blog_content = #{blogContent}
+      </set>
+      <where>
+      	blog_id = #{blogId}
+      </where>
   </update>
 
   <select id="QueryBlog" parameterType="int" resultMap="Blog">
-    SELECT blog_id,blog_img,blog_title,publish_date,author,tag,blog_content FROM blog WHERE blog_id = #{_parameter}
+    SELECT blog_id,blog_img,blog_title,publish_date,author,tag,blog_content FROM blog
+    <where>
+    	blog_id = #{_parameter}
+    </where> 
   </select>
   
   <select id="QueryAllBlog"  resultMap="Blog">
     SELECT blog_id,blog_img,blog_title,publish_date,author,tag,blog_content FROM blog
+  </select>
+  
+  <select id="QueryDetails" parameterType="int" resultMap="Blog">
+  	SELECT B.blog_id B_ID,blog_img,blog_title,publish_date,author,tag,blog_content,com_id,questioner,question_date,email,question_content,D.blog_id D_ID,answer,answer_date,answer_content,R_ID
+  	       FROM blog AS B join 
+  	       (select Comment.com_id,questioner,question_date,email,question_content,blog_id,answer,answer_date,answer_content,Reply.com_id R_ID
+  	       From Comment join
+  	       Reply on Comment.com_id = Reply.com_id) AS D
+  	       on B.blog_id = D.blog_id
+  	<where>
+  		B.blog_id = #{_parameter}
+  	</where>
   </select>
   
 </mapper>

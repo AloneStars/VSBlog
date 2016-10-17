@@ -1,5 +1,9 @@
 package com.violentstone.entity.comment;
 
+import java.util.List;
+
+import com.violentstone.entity.reply.Reply;
+
 public class Comment {
 	
 	//评论id
@@ -19,6 +23,9 @@ public class Comment {
 	
 	//博文id
 	private int blogId;
+	
+	//回复列表
+	private List<Reply> replyList;
 	
 	/*******************setter and getter****************/
 
@@ -42,10 +49,10 @@ public class Comment {
 		return email;
 	}
 
-	public void setEamil(String email) {
+	public void setEmail(String email) {
 		this.email = email;
 	}
-
+	
 	public String getQuestionDate() {
 		return questionDate;
 	}
@@ -69,7 +76,15 @@ public class Comment {
 	public void setBlogId(int blogId) {
 		this.blogId = blogId;
 	}
-	
+		
+	public List<Reply> getReplyList() {
+		return replyList;
+	}
+
+	public void setReplyList(List<Reply> replyList) {
+		this.replyList = replyList;
+	}
+
 	/*****************toString************************/
     
 	@Override

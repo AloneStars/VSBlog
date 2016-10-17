@@ -17,8 +17,7 @@ public class Reply {
 	//评论id
 	private int comId;
 
-	
-	
+
 	/*******************setter and getter****************/
 	
 	public int getRlyId() {

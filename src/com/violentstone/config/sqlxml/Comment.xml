@@ -30,6 +30,7 @@
     <result column="question_date" jdbcType="VARCHAR" property="questionDate"/>   
     <result column="question_content" jdbcType="VARCHAR" property="questionContent"/>
     <result column="blog_id" jdbcType="INTEGER" property="blogId"/>
+    <collection property="replyList" resultMap="Reply.reply"/>
   </resultMap>
   
   <insert id="AddComment" parameterType="com.violentstone.entity.comment.Comment">

@@ -8,6 +8,8 @@ import org.apache.ibatis.session.SqlSession;
 import com.violentstone.Interface.IBlog;
 import com.violentstone.Util.DBAccess;
 import com.violentstone.entity.blog.Blog;
+import com.violentstone.entity.comment.Comment;
+import com.violentstone.entity.reply.Reply;
 
 public class BlogImpl extends DBAccess implements IBlog {
 
@@ -128,6 +130,30 @@ public class BlogImpl extends DBAccess implements IBlog {
 		return blogList;
 	}
 	
+	@Override
+	public List<Blog> queryDetails(int blogId) {
+		// TODO Auto-generated method stub
+        SqlSession sqlSession = null;
+		
+		List<Blog> blogList = null;
+		
+		try {
+			sqlSession = this.getSqlSession();
+			
+			blogList = sqlSession.selectList("Blog.QueryDetails",blogId);
+			
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally{
+			if(sqlSession != null){
+				sqlSession.close();
+			}
+		}
+		return blogList;
+				
+	}
+	
 	public static void main(String[] args) {
 		
 		BlogImpl bi = new BlogImpl();
@@ -135,6 +161,39 @@ public class BlogImpl extends DBAccess implements IBlog {
 		Blog blog = new Blog();
 		
 		List<Blog> blogList = null;
+		
+		List<Comment> commentList = null;
+		
+		List<Reply> replyList = null;
+		
+		
+		blogList = bi.queryDetails(1);
+		
+		for (Blog blog2 : blogList) {
+			
+			System.out.println(blog2.toString());
+			
+			System.out.println("该博客评论总数:"+blog2.getCommentList().size());
+			
+			commentList = blog2.getCommentList();
+			
+			for (Comment comment : commentList) {
+				
+				System.out.println(comment.toString());
+				
+				System.out.println("该评论回复总数:"+comment.getReplyList().size());
+				
+				replyList = comment.getReplyList();
+				
+				for (Reply reply : replyList) {
+					
+					System.out.println("回复类容:"+reply.toString());
+									
+				}
+				
+			}
+			
+		}
 		
 		/*1.添加博客*/
 		/*blog.setBlogImg("images/blog/blog-1.jpg,images/blog/blog-2.jpg,images/blog/blog-3.jpg");
@@ -169,8 +228,10 @@ public class BlogImpl extends DBAccess implements IBlog {
 		}*/
 		
 		/*5.删除博文*/
-		bi.delBlog(2);
+		/*bi.delBlog(2);*/
 		
 	}
+
+	
 
 }

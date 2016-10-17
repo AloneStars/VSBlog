@@ -1,5 +1,9 @@
 package com.violentstone.entity.blog;
 
+import java.util.List;
+
+import com.violentstone.entity.comment.Comment;
+
 public class Blog {
 	
 	//博文Id
@@ -22,6 +26,9 @@ public class Blog {
 	
 	//博文内容
 	private String blogContent;
+	
+	//评论列表
+	private List<Comment>  CommentList;
 
 	
 	/***************************setter and getter*******************/
@@ -79,8 +86,16 @@ public class Blog {
 
 	public void setBlogContent(String blogContent) {
 		this.blogContent = blogContent;
-	}
+	}	
 	
+	public List<Comment> getCommentList() {
+		return CommentList;
+	}
+
+	public void setCommentList(List<Comment> commentList) {
+		CommentList = commentList;
+	}
+
 	/****************************toString**********************/
 	
 	@Override
@@ -91,5 +106,4 @@ public class Blog {
 				+ blogContent + "]";
 	}
 	
-
 }

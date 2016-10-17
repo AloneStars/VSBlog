@@ -1,5 +1,9 @@
 package com.violentstone.entity.blog;
 
+import java.util.ArrayList;
+
+import com.violentstone.entity.comment.Comment;
+
 public class BlogFactory {
 
 	static Blog blog = null;
@@ -19,6 +23,7 @@ public class BlogFactory {
 		blog.setAuthor(author);
 		blog.setTag(tag);
 		blog.setBlogContent(blogContent);
+		blog.setCommentList(new ArrayList<Comment>());
 		
 		if(blogId.length == 1)
 			blog.setBlogId(blogId[0]);

@@ -1,5 +1,9 @@
 package com.violentstone.entity.comment;
 
+import java.util.ArrayList;
+
+import com.violentstone.entity.reply.Reply;
+
 public class CommentFactory {
 	
 	static Comment comment = null;
@@ -14,15 +18,15 @@ public class CommentFactory {
 			comment = new Comment();
 
 		comment.setQuestioner(questioner);
-		comment.setEamil(email);
+		comment.setEmail(email);
 		comment.setQuestionDate(questionDate);
 		comment.setQuestionContent(questionContent);
+		comment.setReplyList(new ArrayList<Reply>());
 		comment.setBlogId(blogId);
-		
+				
 		if(comId.length == 1)
 			comment.setComId(comId[0]);
-		
-		
+				
 		return comment;		
 	}
 
